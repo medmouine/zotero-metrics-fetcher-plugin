@@ -1,0 +1,5 @@
+content	zotero-metrics-fetcher-plugin				content/
+locale	zotero-metrics-fetcher-plugin	en-US		locale/en-US/
+skin	zotero-metrics-fetcher-plugin	default		skin/
+
+overlay	chrome://zotero/content/zoteroPane.xul	chrome://zotero-metrics-fetcher-plugin/content/zotero-metrics-fetcher-plugin.xul

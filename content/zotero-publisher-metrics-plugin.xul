@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://zotero-metrics-fetcher-plugin/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zotero-metrics-fetcher-plugin/locale/zotero-metrics-fetcher-plugin.dtd">
+
+<overlay id="zotero-metrics-fetcher-plugin-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script>
+    var globals = Function('return this')();
+    var zotero_publisher_metrics_plugin_zoteropane = null;
+  </script>
+  <stringbundleset>
+    <stringbundle id="zotero-metrics-fetcher-plugin-strings" src="chrome://zotero-metrics-fetcher-plugin/locale/zotero-metrics-fetcher-plugin.properties"/>
+  </stringbundleset>
+
+	<!-- Include the main extension logic -->
+  <script src="chrome://zotero/content/include.js"/>
+  <script src="chrome://zotero-metrics-fetcher-plugin/content/zotero-metrics-fetcher-plugin.js"/>
+  <script>
+    window.addEventListener('load', async function() {
+      try {
+        Zotero.debug('zotero-metrics-fetcher-plugin startup')
+        await Zotero.PublisherMetricsPlugin.load(globals)
+        Zotero.debug('zotero-metrics-fetcher-plugin started')
+      } catch (err) {
+        Zotero.debug(`zotero-metrics-fetcher-plugin ZoteroPane overlay error: ${err.message}\n${err.stack ||''}`)
+      }
+    })
+  </script>
+</overlay>
